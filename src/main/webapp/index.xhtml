@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to Java Beat  for seeing PrimeFaces_Spring_Hibernate_Project</title>
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+    <p:panelGrid id="mainGrid">
+        <p:row>
+            <p:column styleClass="leftContent">
+                <ui:insert name="header" >
+                    <ui:include src="/template/menu.xhtml" />
+                </ui:insert>
+            </p:column>
+            <p:column styleClass="mainContent">
+                <h:form prependId="false" id="treeMenu">
+                    <h3>Menu</h3>
+                    <p:growl id="msgs" showDetail="true" />
+
+                    <p:tree value="#{treeMenuBean.root}"
+                            var="node"
+                            selectionMode="single"
+                            selection="#{treeMenuBean.selectedNode}"
+                            draggable="true"
+                            droppable="true"
+                            dragdropScope="demo">
+
+                        <p:ajax event="dragdrop" listener="#{treeMenuBean.onDragDrop}" update=":treeMenu:msgs" />
+
+                        <p:treeNode>
+                            <h:outputText value="#{node.name}" />
+                        </p:treeNode>
+                    </p:tree>
+                </h:form>
+            </p:column>
+        </p:row>
+    </p:panelGrid>
+
+</h:body>
+</html>
