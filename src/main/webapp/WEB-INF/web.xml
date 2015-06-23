@@ -7,10 +7,6 @@
          id="WebApp_ID" version="2.5">
     <display-name>my-project</display-name>
     <context-param>
-        <param-name>hibernateConfig</param-name>
-        <param-value>/WEB-INF/hibernate.cfg.xml</param-value>
-    </context-param>
-    <context-param>
         <param-name>com.sun.faces.writeStateAtFormEnd</param-name>
         <param-value>false</param-value>
     </context-param>
