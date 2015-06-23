@@ -16,9 +16,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-/**
- * Дерево меню
- */
+/** Дерево меню */
 @ManagedBean
 @RequestScoped
 public class TreeMenuBean implements Serializable {
