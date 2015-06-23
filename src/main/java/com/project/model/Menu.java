@@ -1,5 +1,7 @@
 package com.project.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -29,7 +31,7 @@ public class Menu implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="parentMenu")
     @OrderBy("order")
-    //@Fetch(FetchMode.SUBSELECT)
+    @Fetch(FetchMode.SUBSELECT)
     private List<Menu> childMenus = new ArrayList<Menu>();
 
     public Integer getId() {

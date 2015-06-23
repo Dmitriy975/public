@@ -34,18 +34,15 @@
             </list>
         </property>
         <!--
-        <property name="configLocation">
-            <value>/WEB-INF/hibernate.cfg.xml</value>
-        </property>
-
         <property name="annotatedClasses">
             <list>
+                <value>com.project.model.Menu</value>
                 <value>com.project.model.Menu</value>
             </list>
         </property>-->
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.DB2400Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
