@@ -56,7 +56,7 @@ public class MenuDaoImpl implements MenuDao {
     public void changeOrder(Integer parentId, int indexOrderBefore, Integer indexOrderAfter, int iteration) {
         String queryString = CHANGE_ORDER;
         if (indexOrderAfter != null) {
-            queryString += "AND order <= :orderAfter ";
+            queryString += "AND order_index <= :orderAfter ";
         }
         Query query = this.sessionFactory.getCurrentSession().createQuery(queryString);
         query.setParameter("parrentId", parentId, new IntegerType());

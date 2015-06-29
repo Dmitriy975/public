@@ -2,6 +2,7 @@ package com.project.beans;
 
 import com.project.model.Menu;
 import com.project.service.MenuService;
+import com.project.utils.TreeUtils;
 import org.primefaces.event.TreeDragDropEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
@@ -38,22 +39,10 @@ public class TreeMenuBean implements Serializable {
         this.menu = this.menuService.listMenus();
         Menu menu = new Menu();
         menu.setName("menu");
-        menu.setChildMenus(this.menu);
+        menu.setChilds(this.menu);
         root = new DefaultTreeNode(menu, null);
         for (Menu subMenu : this.menu) {
-            getNodeWithChildren(subMenu, root);
-        }
-    }
-
-    /**
-     * Создаём рекурсивно дерево
-     * @param subMenu Объект меню, который помещаем в родительскую ветку parent
-     * @param parent Родительская ветка в которую помещаем subMenu
-     */
-    public void getNodeWithChildren(Menu subMenu, TreeNode parent){
-        TreeNode newNode = new DefaultTreeNode(subMenu, parent);
-        for (Menu menu : subMenu.getChildMenus()){
-            getNodeWithChildren(menu, newNode);
+            TreeUtils.buildTreeNodesRecursive(subMenu, root);
         }
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "menu")
-public class Menu implements Serializable {
+public class Menu implements TreeEntity<Menu>, Serializable {
 
     @Id
     @Column(name = "id")
@@ -24,15 +24,15 @@ public class Menu implements Serializable {
 
     @ManyToOne(cascade= {CascadeType.REFRESH}, fetch= FetchType.LAZY)
     @JoinColumn(name="menu_id", nullable = true)
-    private Menu parentMenu;
+    private Menu parent;
 
     @Column(name = "order_index")
     private int order;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="parentMenu")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="parent")
     @OrderBy("order")
     @Fetch(FetchMode.SUBSELECT)
-    private List<Menu> childMenus = new ArrayList<Menu>();
+    private List<Menu> childs = new ArrayList<Menu>();
 
     public Integer getId() {
         return id;
@@ -50,20 +50,20 @@ public class Menu implements Serializable {
         this.name = name;
     }
 
-    public Menu getParentMenu() {
-        return parentMenu;
+    public Menu getParent() {
+        return parent;
     }
 
-    public void setParentMenu(Menu parentMenu) {
-        this.parentMenu = parentMenu;
+    public void setParent(Menu parent) {
+        this.parent = parent;
     }
 
-    public List<Menu> getChildMenus() {
-        return childMenus;
+    public List<Menu> getChilds() {
+        return childs;
     }
 
-    public void setChildMenus(List<Menu> childMenus) {
-        this.childMenus = childMenus;
+    public void setChilds(List<Menu> childMenus) {
+        this.childs = childMenus;
     }
 
     public int getOrder() {

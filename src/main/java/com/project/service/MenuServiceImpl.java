@@ -44,15 +44,15 @@ public class MenuServiceImpl implements MenuService {
         int indexOrderBefore = menu.getOrder();
         menu.setOrder(indexOrderAfter);
         // если мы изменили родителя
-        if (!menuParent.getChildMenus().contains(menu)) {
+        if (!menuParent.getChilds().contains(menu)) {
             // получаем родителя который был, но родителя может и не быть вообще (shop_id = null)
-            Integer oldParentId = menu.getParentMenu() != null ? menu.getParentMenu().getId() : null;
+            Integer oldParentId = menu.getParent() != null ? menu.getParent().getId() : null;
             // у старого родителя смещаем индекс сортировки на -1 начиная с indexOrderBefore (там где раньше находился элемент)
             menuDao.changeOrder(oldParentId, indexOrderBefore, null, -1);
             // у нового родителя смещаем индекс сортировки на +1 начиная с indexOrderAfter
             // (мы вставили элемент на это место, значит двигаем все остальные)
             menuDao.changeOrder(menuParent.getId(), indexOrderAfter, null, 1);
-            menu.setParentMenu(menuParent.getId() != null ? menuParent : null);
+            menu.setParent(menuParent.getId() != null ? menuParent : null);
         } else {
             // Пример: есть у нас элементы 1:а,2:б,3:в,4:г,5:д,6:е перемещаем элемент б на место д, для этого смещаем элементы
             // начиная со 2-го(indexOrderBefore) и заканчивая 5ым(indexOrderAfter) на 1ин влево получем 1:а,2:д,3:б,4:в,5:г,6:е
