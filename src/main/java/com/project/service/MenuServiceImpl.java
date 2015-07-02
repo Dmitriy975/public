@@ -21,8 +21,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Transactional
-    public List<Menu> listMenus() {
-        return this.menuDao.listMenus();
+    public List<Menu> getListMenus() {
+        return this.menuDao.getListMenus();
     }
 
     @Override

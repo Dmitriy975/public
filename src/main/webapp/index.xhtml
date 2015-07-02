@@ -15,29 +15,12 @@
         <p:row>
             <p:column styleClass="leftContent">
                 <ui:insert name="header" >
-                    <ui:include src="/template/menu.xhtml" />
+                    <ui:include src="/views/menu.xhtml" />
                 </ui:insert>
             </p:column>
             <p:column styleClass="mainContent">
-                <h:form prependId="false" id="treeMenu">
-                    <h3>Menu</h3>
-                    <p:growl id="msgs" showDetail="true" />
-
-                    <p:tree value="#{treeMenuBean.root}"
-                            var="node"
-                            selectionMode="single"
-                            selection="#{treeMenuBean.selectedNode}"
-                            draggable="true"
-                            droppable="true"
-                            dragdropScope="demo">
-
-                        <p:ajax event="dragdrop" listener="#{treeMenuBean.onDragDrop}" update=":treeMenu:msgs" />
-
-                        <p:treeNode>
-                            <h:outputText value="#{node.name}" />
-                        </p:treeNode>
-                    </p:tree>
-                </h:form>
+                <ui:insert name="mainContent" >
+                </ui:insert>
             </p:column>
         </p:row>
     </p:panelGrid>

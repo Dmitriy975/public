@@ -12,8 +12,6 @@ public interface TreeEntity<T> {
 
     public T getParent();
     public void setParent(T parent);
-    public int getOrder();
-    public void setOrder(int order);
     public List<T> getChilds();
     public void setChilds(List<T> childs);
 }

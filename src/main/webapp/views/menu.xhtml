@@ -12,8 +12,8 @@
     <h:form prependId="true" id="adminMenu">
         <p:panelMenu>
             <p:submenu label="Хз" styleClass="otherMenu">
-                <p:menuitem value="Меню" icon="fa fa-navicon fa-fw fa-align-center" />
-                <p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" /><p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" /><p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" /><p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" /><p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" /><p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" /><p:menuitem value="Update" icon="ui-icon-arrowrefresh-1-w" />
+                <p:menuitem value="Меню" outcome="/views/menu_editor.xhtml" icon="fa fa-navicon fa-fw fa-align-center"/>
+                <p:menuitem value="Задачи" outcome="/views/mind_map.xhtml" icon="ui-icon-arrowrefresh-1-w" />
             </p:submenu>
             <p:submenu label="Non-Ajax Menuitem">
                 <p:menuitem value="Delete" ajax="false" icon="ui-icon-close"/>

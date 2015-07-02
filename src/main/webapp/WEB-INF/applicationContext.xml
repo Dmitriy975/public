@@ -43,6 +43,7 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--<prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop>-->
                 <prop key="hibernate.dialect">org.hibernate.dialect.DB2400Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>

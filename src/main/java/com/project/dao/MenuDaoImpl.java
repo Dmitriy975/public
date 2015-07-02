@@ -28,7 +28,7 @@ public class MenuDaoImpl implements MenuDao {
      * @return List<Menu>
      */
     @SuppressWarnings("unchecked")
-    public List<Menu> listMenus() {
+    public List<Menu> getListMenus() {
         return this.sessionFactory.getCurrentSession().createQuery("from Menu where menu_id is null order by order_index ASC").list();
     }
 

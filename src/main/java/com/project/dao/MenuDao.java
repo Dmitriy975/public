@@ -11,7 +11,7 @@ public interface MenuDao {
 
     public void addMenu(Menu menu);
     public void updateMenu(Menu menu);
-    public List<Menu> listMenus();
+    public List<Menu> getListMenus();
     public Menu getMenuById(int id);
     public void changeOrder(Integer parentId, int indexOrderBefore, Integer indexOrderAfter, int iteration);
 

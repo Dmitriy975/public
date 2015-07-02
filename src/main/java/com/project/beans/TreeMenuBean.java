@@ -1,5 +1,6 @@
 package com.project.beans;
 
+import com.project.enums.MindMapStatus;
 import com.project.model.Menu;
 import com.project.service.MenuService;
 import com.project.utils.TreeUtils;
@@ -36,7 +37,7 @@ public class TreeMenuBean implements Serializable {
     @PostConstruct
     public void init() {
         //long startTime = System.currentTimeMillis();
-        this.menu = this.menuService.listMenus();
+        this.menu = this.menuService.getListMenus();
         Menu menu = new Menu();
         menu.setName("menu");
         menu.setChilds(this.menu);
