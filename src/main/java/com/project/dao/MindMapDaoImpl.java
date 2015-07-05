@@ -23,7 +23,7 @@ public class MindMapDaoImpl implements MindMapDao {
      */
     @Override
     public void addMindMap(MindMap mindMap) {
-        //todo
+        this.sessionFactory.getCurrentSession().save(mindMap);
     }
 
     /**
@@ -32,7 +32,7 @@ public class MindMapDaoImpl implements MindMapDao {
      */
     @Override
     public void updateMindMap(MindMap mindMap) {
-        //todo
+        this.sessionFactory.getCurrentSession().update(mindMap);
     }
 
     /**

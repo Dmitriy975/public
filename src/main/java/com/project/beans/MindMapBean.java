@@ -9,16 +9,18 @@ import org.primefaces.model.mindmap.MindmapNode;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Бин диаграммы дел
  * @author dmitriy
  */
+
 @ManagedBean
-@RequestScoped
-public class MindMapBean {
+@ViewScoped
+public class MindMapBean implements Serializable {
 
     @ManagedProperty(value="#{mindMapServiceImpl}")
     private MindMapService mindMapService;
@@ -28,7 +30,7 @@ public class MindMapBean {
 
     private MindmapNode root;
 
-    private MindmapNode selectedNode;
+    private MindMap selectedMindMap;
 
     @PostConstruct
     public void init() {
@@ -50,7 +52,7 @@ public class MindMapBean {
     }
 
     public void onNodeSelect(SelectEvent event) {
-        MindmapNode node = (MindmapNode) event.getObject();
+        selectedMindMap = (MindMap) ((MindmapNode) event.getObject()).getData();
     }
 
     public MindMapService getMindMapService() {
@@ -77,12 +79,12 @@ public class MindMapBean {
         this.root = root;
     }
 
-    public MindmapNode getSelectedNode() {
-        return selectedNode;
+    public MindMap getSelectedMindMap() {
+        return selectedMindMap;
     }
 
-    public void setSelectedNode(MindmapNode selectedNode) {
-        this.selectedNode = selectedNode;
+    public void setSelectedMindMap(MindMap selectedMindMap) {
+        this.selectedMindMap = selectedMindMap;
     }
 
 }

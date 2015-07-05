@@ -3,6 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
         >
@@ -10,10 +11,49 @@
 <ui:composition template="/index.xhtml">
     <ui:define name="mainContent">
         <h:form>
-            <p:mindmap value="#{mindMapBean.root}" style="width: 100%;height: 600px;border: 1px solid black;">
+
+            <p:menubar>
+                <p:menuitem value="Добавить" actionListener="#{dialogMindMapBean.addMindMapToCurrent}" update="mindMapDetails" oncomplete="PF('mindMapDetails').show();" icon="ui-icon-close" />
+            </p:menubar>
+
+            <p:mindmap value="#{mindMapBean.root}" id="mindMap" style="width: 100%;height: 600px;border: 1px solid black;">
                 <p:ajax event="select" listener="#{mindMapBean.onNodeSelect}" />
+                <p:ajax event="dblselect" listener="#{dialogMindMapBean.onNodeDblselect}" update="mindMapDetails" oncomplete="PF('mindMapDetails').show();" />
             </p:mindmap>
+            <!-- Диалог для редактирования задачи -->
+            <p:dialog widgetVar="mindMapDetails" id="mindMapDetails" header="Задача" resizable="false" modal="true" showEffect="fade" hideEffect="fade">
+                <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank editDialogGrid">
+
+                    <h:outputLabel for="name" value="Название:" />
+                    <p:inputText id="name" value="#{dialogMindMapBean.selectedMindMap.name}"/>
+
+                    <h:outputLabel for="needToDo" value="Задача:" />
+                    <p:editor id="needToDo" widgetVar="editorWidget" value="#{dialogMindMapBean.selectedMindMap.needToDo}"/>
+
+                    <h:outputLabel for="needToDo" value="Статус:" />
+                    <p:selectOneButton value="#{dialogMindMapBean.selectedMindMap.status}" >
+                        <f:selectItems value="#{dialogMindMapBean.statuses}" />
+                    </p:selectOneButton>
+
+                    <h:outputLabel for="needToDo" value="Родительская задача:" />
+                    <p:tree value="#{dialogMindMapBean.mindMapTree}"
+                            var="node"
+                            selectionMode="single"
+                            selection="#{dialogMindMapBean.selectedNode}">
+                        <p:treeNode>
+                            <h:outputText value="#{node.name}" />
+                        </p:treeNode>
+                    </p:tree>
+
+                </p:panelGrid>
+                <f:facet name="footer">
+                    <p:commandButton value="Сохранить" update="mindMap" actionListener="#{dialogMindMapBean.saveMindMap}"
+                                     oncomplete="PF('mindMapDetails').hide();" />
+                    <p:commandButton value="Закрыть" oncomplete="PF('mindMapDetails').hide();" />
+                </f:facet>
+            </p:dialog>
         </h:form>
+
     </ui:define>
 </ui:composition>
 </body>

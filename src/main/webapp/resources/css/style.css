@@ -48,11 +48,10 @@ html {
 #adminMenu .fa {
     line-height: 1.5;
 }
-#mainGrid .ui-panelgrid-cell, #mainGrid .ui-widget-content {
-    border: 0px;
-    padding: 0;
+.ui-panelgrid-cell, .ui-widget-content {
+    border: 0;
 }
-#mainGrid .ui-panelgrid-cell {
+.ui-panelgrid-cell {
     vertical-align: top;
 }
 #mainGrid {
@@ -65,7 +64,28 @@ html {
 #mainGrid .leftContent {
     width: 200px;
     height: 100%;
+    padding: 0px;
 }
-#mainGrid .ui-tree .ui-treenode-content {
+.ui-tree .ui-treenode-content {
     display: block;
+}
+.editDialogGrid {
+    width: 700px;
+}
+
+.ui-panelgrid .ui-panelgrid-cell {
+    border-width: 0 !important;
+}
+/** Стили для диалога на редактирование */
+.ui-dialog-content {
+    padding: 20px;
+}
+.ui-dialog td input {
+    width: 100%;
+}
+.ui-dialog .ui-panelgrid-cell input{
+    width: 100%;
+}
+.ui-editor {
+    border: 1px solid #a8a8a8;
 }

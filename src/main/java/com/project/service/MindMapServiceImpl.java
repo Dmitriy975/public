@@ -41,7 +41,7 @@ public class MindMapServiceImpl implements MindMapService {
      */
     @Override
     @Transactional(readOnly = false)
-    public void updateMenu(MindMap mindMap) {
+    public void updateMindMap(MindMap mindMap) {
         mindMapDao.updateMindMap(mindMap);
     }
 

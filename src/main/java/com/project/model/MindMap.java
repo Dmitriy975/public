@@ -29,9 +29,6 @@ public class MindMap implements TreeEntity<MindMap>, Serializable {
     @Column(name = "need_to_do")
     private String needToDo;
 
-    @Column(name = "need_to_do_full")
-    private String needToDoFull;
-
     @Column(name = "status")
     private MindMapStatus status;
 
@@ -83,14 +80,6 @@ public class MindMap implements TreeEntity<MindMap>, Serializable {
         this.needToDo = needToDo;
     }
 
-    public String getNeedToDoFull() {
-        return needToDoFull;
-    }
-
-    public void setNeedToDoFull(String needToDoFull) {
-        this.needToDoFull = needToDoFull;
-    }
-
     public MindMapStatus getStatus() {
         return status;
     }
@@ -105,7 +94,6 @@ public class MindMap implements TreeEntity<MindMap>, Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", needToDo='" + needToDo + '\'' +
-                ", needToDoFull='" + needToDoFull + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }

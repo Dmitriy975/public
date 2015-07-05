@@ -8,6 +8,6 @@ public interface MindMapService {
 
     public void addMindMap(MindMap mindMap);
     public List<MindMap> getListMindMap();
-    public void updateMenu(MindMap mindMap);
+    public void updateMindMap(MindMap mindMap);
 
 }
